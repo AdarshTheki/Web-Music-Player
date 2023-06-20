@@ -3,7 +3,7 @@ import Login from "./Login.js";
 import { getTokenFromUrl } from "./spotify";
 import Player from "./Player.js";
 import SpotifyWebApi from "spotify-web-api-js";
-import { useDataLayerValue } from "./DataLayer";
+import { useDataLayerValue } from "./Context/DataLayer.js";
 
 const spotify = new SpotifyWebApi();
 
@@ -48,13 +48,6 @@ function App() {
           discover_weekly: resp,
         });
       });
-
-      // spotify.getAlbum("37i9dQZF1DWZNJXX2UeBij").then((res)=>{
-      //   dispatch({
-      //     type:"SET_ALBUM",
-      //     getAlbum: res,
-      //   })
-      // })
     }
   }); // I will remove to []
 
