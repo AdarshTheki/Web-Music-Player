@@ -1,0 +1,32 @@
+.sidebar {
+  border-radius: 20px;
+  color: aliceblue;
+  border: 5px solid black;
+  height: 100vh;
+  flex: 0.2;
+  background-color: #121212;
+  padding: 0 10px;
+  min-width: 230px;
+}
+.sidebar__logo {
+  object-fit: contain;
+  height: 60px;
+  width: 100%;
+  padding: 10px;
+}
+.sidebar__title{
+  text-transform: uppercase;
+  padding-left: 10px;
+  color: #dbdbdb;
+}
+.sidebar__title:hover {
+  color: #fff;
+}
+.sidebar > hr {
+  border: 1px solid #282828;
+  width: 90%;
+  margin: 10px auto;
+}
+.sidebar_div{
+  color: #dbdbdb;
+}

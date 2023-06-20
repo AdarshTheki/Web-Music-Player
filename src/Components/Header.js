@@ -2,7 +2,7 @@
 import { Avatar } from "@mui/material";
 import React from "react";
 import "./Header.css";
-import { useDataLayerValue } from "../DataLayer";
+import { useDataLayerValue } from "../Context/DataLayer";
 
 function Header() {
   const [{ user }] = useDataLayerValue();
