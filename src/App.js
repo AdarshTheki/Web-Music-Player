@@ -8,7 +8,7 @@ import { useDataLayerValue } from "./DataLayer";
 const spotify = new SpotifyWebApi();
 
 function App() {
-  const [{user, token }, dispatch] = useDataLayerValue();
+  const [{ token }, dispatch] = useDataLayerValue();
   // Run Code based on a given condition
   useEffect(() => {
     const hash = getTokenFromUrl();
@@ -23,27 +23,40 @@ function App() {
       });
       // get token Access
       spotify.setAccessToken(_token);
-      
-      // Get Me the the token Access  
+
+      // Get Me the the token Access
       spotify.getMe().then((user) => {
         dispatch({
           type: "SET_USER",
           user: user,
         });
       });
-      
-      // get user PlayList
-      spotify.getUserPlaylists().then((playlists)=> {
-        dispatch({
-          type:"SET_PLAYLISTS",
-          playlists: playlists,
+
+      spotify
+        .getUserPlaylists()
+        .then((playlists) => {
+          dispatch({
+            type: "SET_PLAYLISTS",
+            playlists: playlists,
+          });
         })
-      })
-      // console.log("I Have Toke 👉", token);
+        .catch((err) => console.log("playlist err", err));
+
+      spotify.getPlaylist("37i9dQZF1DWZNJXX2UeBij").then((resp) => {
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: resp,
+        });
+      });
+
+      // spotify.getAlbum("37i9dQZF1DWZNJXX2UeBij").then((res)=>{
+      //   dispatch({
+      //     type:"SET_ALBUM",
+      //     getAlbum: res,
+      //   })
+      // })
     }
-  }, []);
-  // console.log("Destructure 🦸‍♂️", playlists);
-  // console.log("Destructure 👷‍♀️", token);
+  }); // I will remove to []
 
   return <div>{token ? <Player spotify={spotify} /> : <Login />}</div>;
 }

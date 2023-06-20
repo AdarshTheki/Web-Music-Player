@@ -1,7 +1,6 @@
 import React from "react";
 import "./Footer.css";
 import {
-  GridOff,
   PlayCircleOutline,
   PlaylistPlay,
   Repeat,
@@ -27,46 +26,26 @@ export default function Footer() {
         </div>
       </div>
       <div className='footer__center'>
-        <a href='#'>
-          <Shuffle className='footer__icon' />
-        </a>
-        <a href='#'>
-          <SkipPrevious className='footer__icon green' />
-        </a>
-        <a href='#'>
-          <PlayCircleOutline className='footer__icon' />
-        </a>
-        <a href='#'>
-          <SkipNext className='footer__icon green' />
-        </a>
-        <a href='#'>
-          <Repeat className='footer__icon' />
-        </a>
+        <Shuffle className='footer__icon' color="success"/>
+        <SkipPrevious className='footer__icon' color='secondary' />
+        <PlayCircleOutline className='footer__icon' color='primary' />
+        <SkipNext className='footer__icon' color='secondary' />
+        <Repeat className='footer__icon' />
       </div>
 
       <Grid className='footer__right' container spacing={1}>
         <Grid item>
-          <a href='#'>
-            <PlaylistPlay className='footer__icon' />
-          </a>
+          <PlaylistPlay className='footer__icon' />
         </Grid>
         <Grid item>
-          <a href='#'>
-            <VolumeDown className='footer__icon' />
-          </a>
+          <VolumeDown className='footer__icon' />
         </Grid>
-        <Grid item>
-          <a href='#'>
-            <Box sx={{ width: 100 }} >
-              <Slider
-                className="footer__icon"
-                aria-label='slider'
-                defaultValue={30}
-                getAriaValueText={valueText}
-                color='secondary'
-              />
-            </Box>
-          </a>
+        <Grid item sx={{ width: 50 }} color='primary'>
+          <Slider
+            className='footer__icon'
+            defaultValue={30}
+            getAriaValueText={valueText}
+          />
         </Grid>
       </Grid>
     </div>
