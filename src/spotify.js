@@ -1,9 +1,7 @@
-// https://developer.spotify.com/documentation/web-playback-sdk/quick-start/#
-
 export const authEndPoint = "https://accounts.spotify.com/authorize?";
 
 const redirectUri = "http://localhost:3000";
-const clientId = "7a89545e159d4824b2787cf8ae5aa200";  // In AdarshTheKi Account
+const clientId = "7a89545e159d4824b2787cf8ae5aa200"; // In AdarshTheKi Account
 
 const scopes = [
   // "user-read-currently-playing",

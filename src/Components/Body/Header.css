@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__left {
+  flex: 0.5;
+}
+
+/* User name and pic */
+.header__right {
+  display: flex;
+  align-items: center;
+}
+.header__right img {
+  border-radius: 50%;
+  scale: 0.7;
+  object-fit: cover;
+}
+.header__right h4 {
+  margin-left: 10px;
+}
+
+/* Search bar */
+.search {
+  display: flex;
+}
+.searchTerm {
+  padding: 8px;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  outline: none;
+  color: #202020;
+}
+.searchButton {
+  border: none;
+  background: #fc309c;
+  color: #fff;
+  padding: 0 8px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}

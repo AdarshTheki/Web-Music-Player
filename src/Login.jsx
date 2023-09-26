@@ -1,9 +1,9 @@
-import React from "react";
-import "./Login.css";
-import logo from "./assets/Spotify-symbol.jpg";
-import { loginUrl } from "./spotify";
+import React from 'react'
+import './Login.css'
+import logo from "./assets/spotify_logo.svg";
+import { loginUrl } from './spotify';
 
-export default function Login() {
+const Login = () => {
   return (
     <div className='login'>
       {/* Spotify Title */}
@@ -15,3 +15,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login

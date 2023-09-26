@@ -1,9 +1,9 @@
-.sidebarOption{
+.sidebarOption {
   display: flex;
   align-items: center;
   color: aliceblue;
 }
-.sidebarOption__title{
+.sidebarOption__title {
   cursor: pointer;
   line-height: 2;
   color: gray;
@@ -11,9 +11,9 @@
   align-items: center;
   transition: 200ms color ease-in;
 }
-.sidebarOption__title:hover{
+.sidebarOption__title:hover {
   color: aliceblue;
 }
-.sidebarOption__icon{
+.sidebarOption__icon {
   margin: 10px;
 }

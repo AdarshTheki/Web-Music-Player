@@ -1,17 +1,14 @@
-// import { Search } from "@material-ui/icons";
-import { Avatar } from "@mui/material";
-import React from "react";
-import "./Header.css";
-import { useDataLayerValue } from "../Context/DataLayer";
+import React from 'react'
+import './Header.css'
+import {FaSearch} from 'react-icons/fa'
+import { useDataLayerValue } from '../../Context/DataLayer';
 
-function Header() {
+const Header = () => {
   const [{ user }] = useDataLayerValue();
+  
   return (
     <div className='header'>
       <div className='header__left'>
-        {/* <Search />
-        <input type='text' placeholder='Search for Artists, Songs & Others...' /> */}
-
         <div className='wrap'>
           <div className='search'>
             <input
@@ -20,16 +17,22 @@ function Header() {
               placeholder='Search for Artists, Songs & others for?'
             />
             <button type='submit' className='searchButton'>
-              <i className='fa fa-search'></i>
+              <FaSearch/>
             </button>
           </div>
         </div>
       </div>
       <div className='header__right'>
-        <Avatar src={user?.images[0]?.url} alt='RQ' />
+        <img
+          src={user?.images[0]?.url}
+          alt='RQ'
+          width={user?.images[0]?.width}
+          height={user?.images[0]?.height}
+        />
         <h4>{user?.display_name}</h4>
       </div>
     </div>
   );
 }
-export default Header;
+
+export default Header

@@ -3,7 +3,7 @@
 ## What you'll be learn & what's in this build
 
 - User Authentications
-- Spotify API go to the [spotify developer](https://developer.spotify.com/). 
+- Spotify API go to the [spotify developer](https://developer.spotify.com/).
 - Responsive Design
 - Material UI (icons)
 - React Context API (like Redux)
@@ -11,3 +11,10 @@
 - React Hook Functional (Hooks, State)
 - And also [npm install spotify-web-api-js]()
 - npm i @material-ui/icons
+
+```js
+// Firebase Project Name
+"projects": {
+    "default": "spotify-997e3"
+}
+```
