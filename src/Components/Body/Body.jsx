@@ -1,44 +1,40 @@
-import { useDataLayerValue } from "../../Context/DataLayer";
-import "./Body.css";
-import { MdOutlineFavorite } from "react-icons/md";
-import { MdOutlineMoreHoriz } from "react-icons/md";
-import { FaPlayCircle } from "react-icons/fa";
-import Header from "./Header";
-import SongRow from "./SongRow.jsx";
+/* eslint-disable react/prop-types */
+import { useDataLayerValue } from '../../Context/DataLayer';
+import { ButtonComponent } from '../Common/Button.jsx';
+import BodyFooter from './BodyFooter.jsx';
+import BodyHeader from './BodyHeader.jsx';
+import Header from './Header.jsx';
+import './Body.css';
 
 const Body = ({ spotify }) => {
-  const [{ discover_weekly }] = useDataLayerValue();
+    const [{ discover_weekly }] = useDataLayerValue();
 
-  return (
-    <div className='body'>
-      <Header spotify={spotify} />
-      <div className='body__info'>
-        <div className='body__img'>
-          <img src={discover_weekly?.images[0].url} alt='bgImageAny' />
+    return (
+        <div className='body'>
+            <Header spotify={spotify} />
+
+            {/* Body Header section */}
+            <BodyHeader
+                length={discover_weekly?.tracks.items?.length}
+                src={discover_weekly?.images[0].url}
+                name={discover_weekly?.name}
+                description={discover_weekly?.description}
+                infoName={discover_weekly?.owner?.display_name}
+            />
+
+            {/* Music Play Button */}
+            <ButtonComponent />
+
+            {/* PlayLists Song Row  */}
+            <hr />
+            <div>
+                {discover_weekly?.tracks.items.length &&
+                    discover_weekly?.tracks.items.map((item, index) => (
+                        <BodyFooter key={index} track={item.track} added_at={item.added_at} />
+                    ))}
+            </div>
         </div>
-        <div>
-          <div className='body__infoText'>
-            <strong>Playlists</strong>
-            <h2>{discover_weekly?.name?.slice(0, 15)}</h2>
-            <p>{discover_weekly?.description}</p>
-          </div>
-          <div className='body__icon'>
-            <FaPlayCircle fontSize={40} />
-            <MdOutlineFavorite fontSize={20} />
-            <MdOutlineMoreHoriz fontSize={20} />
-          </div>
-        </div>
-      </div>
-      <div className='body__songs'>
-        {/* List of songs */}
-        <div className='body__col'>
-          {discover_weekly?.tracks.items.map((item, index) => (
-            <SongRow track={item.track} key={index} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Body;
