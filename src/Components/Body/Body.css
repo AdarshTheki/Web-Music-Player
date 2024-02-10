@@ -1,70 +1,65 @@
-.body {
-  overflow-y: overlay;
-  border-radius: 20px;
-  padding: 10px;
-  color: aliceblue;
-  border: 5px solid black;
-  flex: 0.8;
-  height: 100vh;
-  background-color: #121212;
-}
-.body::-webkit-scrollbar {
-  display: none;
-}
 
 /*! body__info */
 
 .body__info {
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #181818;
+    width: 100%;
+    display: flex;
+    gap: calc(15px + 2vw);
+    padding: 10px;
 }
 .body__info img {
-  width: 200px;
-  height: 150px;
+    width: calc(50px + 8vw);
+    object-fit: contain;
 }
 .body__infoText {
-  padding-left: 20px;
-  align-items: center;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-.body__infoText strong {
-  color: cyan;
-  font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 .body__infoText h2 {
-  padding: 10px 0;
-  font-size: 2rem;
+    font-size: calc(8px + 4vw);
 }
+
 .body__infoText p {
-  padding-top: 10px;
-  font-size: 0.8rem;
+    padding-top: 10px;
+    font-size: 0.8rem;
+}
+.body__infoDetail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.body__infoDetail span {
+    font-size: 0.8rem;
+}
+.body__infoDetail img {
+    width: 20px;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 /*! .body__songs */
 
-.MuiSvgIcon-root {
-  cursor: pointer;
+.body__songs {
+    padding: 0;
 }
-.body__shuffle {
-  font-size: 60px !important;
-}
-.body__shuffle:hover {
-  transition: all 100ms ease-in;
-  transform: scale(1.1);
-  color: hsl(0, 0%, 63%);
-}
-
 .body__col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
 }
-@media (max-width: 850px) {
-  .body__col {
-    display: block;
-  }
+.body__col div:nth-child(1) {
+    flex: 2;
+}
+.body__col div:nth-child(2) {
+    flex: 1;
+}
+.body__col div:nth-child(3) {
+    flex: 0.8;
+}
+.body__col div:nth-child(4) {
+    flex: 0.5;
 }

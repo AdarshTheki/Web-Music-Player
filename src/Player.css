@@ -1,0 +1,8 @@
+.player {
+    background: #000;
+}
+.player__body {
+    display: flex;
+    position: relative;
+    height: 90vh;
+}
