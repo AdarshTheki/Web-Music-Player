@@ -3,11 +3,11 @@ export const initialState = {
     playLists: [],
     playing: null,
     id: null,
+    items: [],
     albums: null,
     tracks: [],
     collection: null,
-    // token:
-    // "BQAeBsrCBekEqFHLWruUWWPim-5EKecd3E8fN2Siwzu8WXOCoXR-vNAXK3tvezaxWFKQISZYVp4OdfaoLZ6vdkWnhvIIclKOZnb_Lf_aDsxMiRvrqD9O5ym0AqU0tD_4PgNGwqcNJ9pv8KX--YZk-RCz98Sv4O6mo4IzqSbsipzq5yELzrALFAtgM4pvyc_8uDciK9V46x-AlbXg7xNtxy557zaLg2eO2sSz_UqwdsmtG6qPpQoXD4iPssJadHcArEnfDjhyD1hj_MEfutRb3_zSqtQ0R7qt05-yZNAi-4xMaZvy31kS78UFTxcz4q4XpX870wkp",
+    // token: 'BQCYwJEC_IyUghOnY-8z9_pzi-hq_giHyVWfqFOKUr2INWZF_8oq6nHr2Fs3fnW1erWwTYLU3cUBidiLk5TZcbFt2WhQ2YuAgAsQQm54nKqJ5-KhWHFUxV1-_9khanMhOlUy_P1vaR1Xpm-2RoDjkUDknAFMyGbcG88GFLWnpqMFmq55pIe0R68R2E8N3PL97eD2yenojRuRJ5FCq-znb_ndUIFETM2WvbRA5l8gn2fqA4JgWCAIELWdes0r-XLP91g21Iett3dTe0oKh5r4GjyHaAfS7Y7-HtQBuRLBZyZ8HkM88XiUKLVDbwh0ZzQ5XIHZr1lg',
 };
 
 const reducer = (state, action) => {
@@ -38,6 +38,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 id: action.id,
+            };
+        case 'SET_ITEMS':
+            return {
+                ...state,
+                items: action.items,
             };
         case 'SET_TRACKS':
             return {

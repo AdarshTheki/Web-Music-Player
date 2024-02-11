@@ -1,30 +1,37 @@
 import { useDataLayerValue } from '../../Context/DataLayer';
 import './Sidebar.css';
-// import { AiFillHome } from 'react-icons/ai';
-// import { FaSearch } from 'react-icons/fa';
-// import { MdLibraryMusic } from 'react-icons/md';
+import { AiFillHome } from 'react-icons/ai';
+import { FaSearch } from 'react-icons/fa';
+import { MdLibraryMusic } from 'react-icons/md';
 import logo from '../../assets/spotify_logo.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import SideBarList from './SideBarList.jsx';
 
 const Sidebar = () => {
     const Navigate = useNavigate();
-    const [{ playLists, id, collection }] = useDataLayerValue();
+    const [{ playLists, id, collection }, dispatch] = useDataLayerValue();
+
+    const setNullId = () => {
+        dispatch({ type: 'SET_PLAYLIST_ID', id: null });
+        Navigate('/collection/track');
+    };
 
     return (
-        <div className='sidebar'>
-            <NavLink to='/'>
-                <img src={logo} alt='image_logo' className='sidebar__logo' />
-            </NavLink>
-
-            {/* Home section */}
-            {/* <SideBarOption Icon={AiFillHome} title='Home' />
-            <SideBarOption Icon={FaSearch} title='Search' />
-        <SideBarOption Icon={MdLibraryMusic} title='Your Library' /> */}
-
-            <strong className='sidebar__title'>playlist</strong>
+        <div>
+            <div>
+                <NavLink to='/'>
+                    <img src={logo} alt='image_logo' className='sidebar__logo' />
+                </NavLink>
+                {/* Home section */}
+                <section className='sidebar__music'>
+                    <MdLibraryMusic fontSize={24} />
+                    playLists
+                </section>
+            </div>
             {/* Like Collection */}
-            <div onClick={() => Navigate('/collection/track')} className='SideBarList'>
+            <div
+                onClick={() => setNullId()}
+                className={`SideBarList ${id !== null ? '' : 'activeSideBarList'}`}>
                 <div className='SideBarList__title'>
                     <img
                         src='https://misc.scdn.co/liked-songs/liked-songs-640.png'
@@ -40,7 +47,7 @@ const Sidebar = () => {
             </div>
             {/* PlayLists  */}
             <div>
-                {playLists?.items?.map((e, index) => {
+                {playLists?.map((e, index) => {
                     return <SideBarList key={index} {...e} />;
                 })}
             </div>

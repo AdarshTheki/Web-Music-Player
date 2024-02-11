@@ -18,7 +18,7 @@ export function ButtonComponent() {
             style={{
                 display: 'flex',
                 gap: 20,
-                padding: '20px 0',
+                padding: '10px 20px',
             }}>
             <Button>
                 <FaPlayCircle fontSize={50} color='var(--green)' />

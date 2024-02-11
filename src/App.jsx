@@ -25,18 +25,14 @@ const App = () => {
             });
 
             spotify.getUserPlaylists().then((playlists) => {
-                dispatch({ type: 'SET_PLAYLISTS', playLists: playlists });
+                dispatch({ type: 'SET_PLAYLISTS', playLists: playlists?.items });
             });
-
-            // spotify.getNewReleases().then((albums) => {
-            //     dispatch({ type: 'SET_ALBUMS', albums: albums });
-            // });
 
             spotify.getMySavedTracks().then((likesTrack) => {
                 dispatch({ type: 'SET_COLLECTION', collection: likesTrack });
             });
 
-            spotify.getMyCurrentPlayingTrack().then((res) => {
+            spotify.getMyCurrentPlaybackState().then((res) => {
                 dispatch({ type: 'SET_PLAYING', playing: res });
             });
         }
@@ -48,6 +44,7 @@ const App = () => {
         }
         spotify.getPlaylist(id || '5V8dA2hq3hFgNFR5SM7Enb').then((resp) => {
             dispatch({ type: 'SET_DISCOVER_WEEKLY', discover_weekly: resp });
+            dispatch({ type: 'SET_ITEMS', items: resp?.tracks?.items });
         });
     }, [id, token]);
 

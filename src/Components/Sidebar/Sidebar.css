@@ -18,20 +18,18 @@
     height: 60px;
     width: 100%;
     padding: 10px;
+    transition: scale 0.2s ease-out;
 }
-.sidebar__title {
+.sidebar__logo:hover {
+    scale: 0.95;
+}
+
+.sidebar__music {
     text-transform: uppercase;
-    padding-left: 10px;
-    color: #dbdbdb;
-}
-.sidebar__title:hover {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    gap: 10px;
     color: #fff;
-}
-.sidebar > hr {
-    border: 1px solid #282828;
-    width: 90%;
-    margin: 10px auto;
-}
-.sidebar_div {
-    color: #dbdbdb;
 }
