@@ -5,19 +5,19 @@ import BodyFooter from '../Components/Body/BodyFooter';
 import { ButtonComponent } from '../Components/Common/Button';
 
 export default function Playlist() {
-    const [{ discover_weekly }] = useDataLayerValue();
+    const [{ discover_weekly, items }] = useDataLayerValue();
 
     return (
-        <div className='body'>
+        <div>
             {/* Header Section */}
             <BodyHeader
-                length={discover_weekly?.tracks?.total}
+                length={items?.length}
                 description={discover_weekly?.description}
                 artists_name={discover_weekly.owner?.display_name}
                 artists_type={discover_weekly.owner?.type}
                 album_src={discover_weekly?.images[0].url}
-                name={discover_weekly?.name}
-                popularity={discover_weekly?.total}
+                name={discover_weekly?.name || '#NA'}
+                popularity={discover_weekly?.popularity}
             />
             {/* Button Play Section */}
             <div style={{ display: 'flex', gap: 20, margin: '20px 0' }}>
@@ -26,8 +26,8 @@ export default function Playlist() {
 
             <hr />
             {/* Body Row Section */}
-            {discover_weekly.tracks.items?.map((item, index) => (
-                <BodyFooter key={index} track={item?.track} added_at={item.added_at} />
+            {items?.map((item, index) => (
+                <BodyFooter key={index} track={item?.track} added_at={item?.added_at} />
             ))}
         </div>
     );

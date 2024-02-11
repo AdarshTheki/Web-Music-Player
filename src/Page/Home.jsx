@@ -1,18 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useDataLayerValue } from '../../Context/DataLayer';
-import { ButtonComponent } from '../Common/Button.jsx';
-import BodyFooter from './BodyFooter.jsx';
-import BodyHeader from './BodyHeader.jsx';
-import Header from './Header.jsx';
-import './Body.css';
+import { useDataLayerValue } from '../Context/DataLayer.jsx';
+import { ButtonComponent } from '../Components/Common/Button.jsx';
+import BodyFooter from '../Components/Body/BodyFooter.jsx';
+import BodyHeader from '../Components/Body/BodyHeader.jsx';
 
-const Body = ({ spotify }) => {
+const Body = () => {
     const [{ discover_weekly }] = useDataLayerValue();
 
     return (
-        <div className='body'>
-            <Header spotify={spotify} />
-
+        <div>
             {/* Body Header section */}
             <BodyHeader
                 length={discover_weekly?.tracks.items?.length}

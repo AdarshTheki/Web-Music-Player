@@ -5,10 +5,10 @@ import BodyFooter from '../Components/Body/BodyFooter';
 import { ButtonComponent } from '../Components/Common/Button';
 
 export default function Collection() {
-    const [{ collection}] = useDataLayerValue();
+    const [{ collection }] = useDataLayerValue();
 
     return (
-        <div className='body'>
+        <div>
             {/* Header Section */}
             <BodyHeader length={collection?.total} />
             {/* Button Play Section */}

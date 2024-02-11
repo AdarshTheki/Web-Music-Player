@@ -13,7 +13,7 @@ import { useDataLayerValue } from '../../Context/DataLayer';
 import { useState } from 'react';
 
 const Footer = (props) => {
-    const [{ playing }] = useDataLayerValue();
+    const [{ playing, items }] = useDataLayerValue();
     const [play, setPlay] = useState(false);
 
     return (
@@ -46,11 +46,8 @@ const Footer = (props) => {
             </div>
 
             <div className='footer__right'>
-                {/* <input type='range' name='' id='' />
-                <MdVolumeDownAlt className='footer__icon' /> */}
-                <audio controls src={playing?.item?.preview_url}>
-                    audio
-                </audio>
+                <input type='range' name='' id='' />
+                <MdVolumeDownAlt className='footer__icon' />
             </div>
         </div>
     );

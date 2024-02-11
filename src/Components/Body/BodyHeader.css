@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     gap: calc(15px + 1vw);
-    padding: 10px;
+    padding: 10px 20px;
 }
 .bodyHeader img {
     width: calc(50px + 8vw);
@@ -18,12 +18,14 @@
 .bodyHeader__detail h2 {
     font-size: calc(6px + 4vw);
     padding: 0;
+    line-height: 1;
 }
 
 .bodyHeader__detail p {
     font-size: 0.8rem;
 }
 .bodyHeader__other {
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
