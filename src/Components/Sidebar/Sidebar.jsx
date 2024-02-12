@@ -1,8 +1,6 @@
 import { useDataLayerValue } from '../../Context/DataLayer';
 import './Sidebar.css';
-import { AiFillHome } from 'react-icons/ai';
-import { FaSearch } from 'react-icons/fa';
-import { MdLibraryMusic } from 'react-icons/md';
+import { MdLibraryMusic, MdAudiotrack } from 'react-icons/md';
 import logo from '../../assets/spotify_logo.svg';
 import { NavLink, useNavigate } from 'react-router-dom';
 import SideBarList from './SideBarList.jsx';
@@ -18,16 +16,9 @@ const Sidebar = () => {
 
     return (
         <div>
-            <div>
-                <NavLink to='/'>
-                    <img src={logo} alt='image_logo' className='sidebar__logo' />
-                </NavLink>
-                {/* Home section */}
-                <section className='sidebar__music'>
-                    <MdLibraryMusic fontSize={24} />
-                    playLists
-                </section>
-            </div>
+            <NavLink to='/'>
+                <img src={logo} alt='image_logo' className='sidebar__logo' />
+            </NavLink>
             {/* Like Collection */}
             <div
                 onClick={() => setNullId()}
@@ -51,6 +42,11 @@ const Sidebar = () => {
                     return <SideBarList key={index} {...e} />;
                 })}
             </div>
+            {/*  */}
+            <section className='sidebar__music' style={{ margin: 'auto', padding: '20px 0' }}>
+                <MdAudiotrack fontSize={24} />
+                <NavLink to={'artists/123'}>Artists</NavLink>
+            </section>
         </div>
     );
 };

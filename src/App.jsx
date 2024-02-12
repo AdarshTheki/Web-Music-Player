@@ -49,6 +49,7 @@ const App = () => {
             dispatch({ type: 'SET_DISCOVER_WEEKLY', discover_weekly: resp });
             dispatch({ type: 'SET_ITEMS', items: resp?.tracks?.items });
         });
+        // spotify.getArtistTopTracks()
     }, [id, token]);
 
     return <div>{token ? <Player spotify={spotify} /> : <Login />}</div>;

@@ -4,7 +4,7 @@ import Sidebar from './Components/Sidebar/Sidebar';
 import Footer from './Components/Footer/Footer';
 import Collection from './Page/Collection';
 import Playlist from './Page/Playlist';
-import Album from './Page/Album';
+import Artists from './Page/Artists';
 import Tracks from './Page/Tracks';
 import Home from './Page/Home';
 import Header from './Components/Body/Header';
@@ -25,7 +25,7 @@ const Player = ({ spotify }) => {
                             <Route path='track/:trackId' element={<Tracks spotify={spotify} />} />
                             <Route path='playlist/:playlistId' element={<Playlist />} />
                             <Route path='collection/track' element={<Collection />} />
-                            <Route path='album/:albumId' element={<Album />} />
+                            <Route path='artists/:artistId' element={<Artists spotify={spotify} />} />
                         </Routes>
                     </div>
                 </div>

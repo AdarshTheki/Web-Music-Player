@@ -19,12 +19,7 @@ export default function SideBarList({ name, id, type, images, owner }) {
             onClick={() => setId(id)}>
             <div className='SideBarList__title'>
                 {images && (
-                    <img
-                        className='SideBarList__icon'
-                        src={images[2] ? images[2]?.url : images[0]?.url}
-                        alt={id}
-                        width={50}
-                    />
+                    <img className='SideBarList__icon' src={images[0]?.url} alt={id} width={50} />
                 )}
                 <div>
                     <h5 className='line-clamp'>{name}</h5>
