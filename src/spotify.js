@@ -1,6 +1,7 @@
 export const authEndPoint = 'https://accounts.spotify.com/authorize?';
 
-const redirectUri = 'http://localhost:3000';
+// const redirectUri = 'http://localhost:3000';
+const redirectUri = 'https://resonant-wisp-14c2e8.netlify.app';
 // const clientId = '7a89545e159d4824b2787cf8ae5aa200'; // In AdarshTheKi Account
 const clientId = '0932d71c3f1741b7b0812b953904be50'; // In AdarshVerma549 Account
 
