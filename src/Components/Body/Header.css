@@ -20,7 +20,8 @@
     position: relative;
 }
 .searchTerm {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     padding: 15px 40px;
     border-radius: 100vmax;
     border: none;

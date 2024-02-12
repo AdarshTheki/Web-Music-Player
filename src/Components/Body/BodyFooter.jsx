@@ -3,15 +3,20 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { convertDate, convertTime } from '../../utils';
 import './BodyFooter.css';
+import LazyImage from '../Common/LazyImage';
 
 export default function BodyFooter({ track, added_at }) {
     return (
         <div className='bodyFooter'>
-            <div className='bodyFooter__rowOne'>
-                <img
+            <div className='bodyFooter__rowOne col1'>
+                {/* <img
                     src={track?.album?.images[2].url || track?.album?.images[0].url}
                     alt={track.name}
                     width={20}
+                /> */}
+                <LazyImage
+                    src={track?.album?.images[2].url || track?.album?.images[0].url}
+                    alt={track?.name}
                 />
                 <div>
                     <NavLink
@@ -29,11 +34,11 @@ export default function BodyFooter({ track, added_at }) {
                     </p>
                 </div>
             </div>
-            <div className='span hover line-clamp' title={track?.album?.type}>
+            <div className='span hover line-clamp col2' title={track?.album?.type}>
                 {track?.album?.name}
             </div>
-            <div>{convertDate(added_at)}</div>
-            <div>{convertTime(track.duration_ms)}</div>
+            <div className='col3'>{added_at && convertDate(added_at) || '02-14-2023'}</div>
+            <div className='col4'>{convertTime(track?.duration_ms) || "NA"}</div>
         </div>
     );
 }

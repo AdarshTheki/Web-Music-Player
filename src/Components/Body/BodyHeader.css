@@ -44,3 +44,8 @@
     object-fit: contain;
     border-radius: 50%;
 }
+@media (max-width: 30em) {
+    .bodyHeader {
+        display: block;
+    }
+}
