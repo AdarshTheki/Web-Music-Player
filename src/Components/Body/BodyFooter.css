@@ -19,16 +19,16 @@
     background: var(--black-300);
 }
 
-.bodyFooter div:nth-child(1) {
+.bodyFooter > .col1 {
     flex: 2;
 }
-.bodyFooter div:nth-child(2) {
+.bodyFooter > .col2 {
     flex: 1;
 }
-.bodyFooter div:nth-child(3) {
+.bodyFooter > .col3 {
     flex: 0.8;
 }
-.bodyFooter div:nth-child(4) {
+.bodyFooter > .col4 {
     flex: 0.5;
 }
 
@@ -55,4 +55,20 @@
 .bodyFooter__artist span:not(:last-child)::after {
     content: ',';
     padding-right: 5px;
+}
+
+@media (max-width: 60em) {
+    .bodyFooter > .col3 {
+        display: none;
+    }
+}
+@media (max-width: 50em) {
+    .bodyFooter > .col2 {
+        display: none;
+    }
+}
+@media (max-width: 25em) {
+    .bodyFooter > .col4 {
+        display: none;
+    }
 }

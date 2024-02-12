@@ -1,22 +1,20 @@
-.artists__lists{
+.artists__lists {
     max-width: 90vw;
     margin: 10px auto;
 }
-.artists {
+.artists__lists .artists {
     cursor: pointer;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid transparent;
-}
-.artists:hover {
-    border: 1px solid var(--black-500);
-    background: var(--black-300);
-}
-.artists__lists .artists {
     display: flex;
     align-items: center;
     text-align: center;
     gap: 30px;
+}
+.artists:hover {
+    border: 1px solid var(--black-500);
+    background: var(--black-300);
 }
 .artists__lists .artists__img {
     width: 100px;
@@ -25,4 +23,5 @@
     width: 100%;
     border-radius: 50%;
     object-fit: fill;
+    overflow: hidden;
 }

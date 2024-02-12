@@ -26,10 +26,30 @@
 
 .sidebar__music {
     text-transform: uppercase;
+    max-width: 120px;
     display: flex;
     align-items: center;
-    padding: 10px;
+    justify-content: space-evenly;
     font-size: 14px;
-    gap: 10px;
     color: #fff;
+}
+.sidebar__music a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Manage Media Query in 30 view screen */
+@media (max-width: 40em) {
+    .sidebar {
+        min-width: 100px;
+    }
+    .SideBarList__title > img {
+        display: block;
+        margin: 5px 0;
+        width: 100%;
+        object-fit: contain;
+    }
+    .SideBarList__title > div {
+        display: none;
+    }
 }
