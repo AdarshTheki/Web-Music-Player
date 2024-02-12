@@ -35,6 +35,9 @@ const App = () => {
             spotify.getMyCurrentPlaybackState().then((res) => {
                 dispatch({ type: 'SET_PLAYING', playing: res });
             });
+        } else {
+            // Handle case where access token is missing
+            console.error('Access token not found in URL hash');
         }
     }, []);
 
