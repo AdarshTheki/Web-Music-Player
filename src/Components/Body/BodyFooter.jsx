@@ -1,19 +1,22 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { convertDate, convertTime } from '../../utils';
 import './BodyFooter.css';
 import LazyImage from '../Common/LazyImage';
+import { useDataLayerValue } from '../../Context/DataLayer';
 
-export default function BodyFooter({ track, added_at }) {
+export default function BodyFooter({ track, added_at, index }) {
+    const [{ songs }, dispatch] = useDataLayerValue();
+
+    function songsHandler() {
+        dispatch({ type: 'SET_SONGS', songs: track });
+    }
+
     return (
-        <div className='bodyFooter'>
+        <div className='bodyFooter' onClick={songsHandler}>
             <div className='bodyFooter__rowOne col1'>
-                {/* <img
-                    src={track?.album?.images[2].url || track?.album?.images[0].url}
-                    alt={track.name}
-                    width={20}
-                /> */}
+                {index && <p>{index}</p>}
                 <LazyImage
                     src={track?.album?.images[2].url || track?.album?.images[0].url}
                     alt={track?.name}
@@ -34,11 +37,11 @@ export default function BodyFooter({ track, added_at }) {
                     </p>
                 </div>
             </div>
-            <div className='span hover line-clamp col2' title={track?.album?.type}>
+            <p className='span hover line-clamp col2' title={track?.album?.type}>
                 {track?.album?.name}
-            </div>
-            <div className='col3'>{added_at && convertDate(added_at) || '02-14-2023'}</div>
-            <div className='col4'>{convertTime(track?.duration_ms) || "NA"}</div>
+            </p>
+            <p className='col3'>{(added_at && convertDate(added_at)) || '02-14-2023'}</p>
+            <p className='col4'>{convertTime(track?.duration_ms) || 12345}</p>
         </div>
     );
 }
