@@ -1,32 +1,40 @@
 /* eslint-disable react/prop-types */
 import { useDataLayerValue } from '../Context/DataLayer.jsx';
-import { ButtonComponent } from '../Components/Common/Button.jsx';
+import IFrame from '../Components/Common/IFrame.jsx';
 import BodyFooter from '../Components/Body/BodyFooter.jsx';
 import BodyHeader from '../Components/Body/BodyHeader.jsx';
 
 const Body = () => {
-    const [{ discover_weekly }] = useDataLayerValue();
+    const [{ playing, songs }] = useDataLayerValue();
 
     return (
         <div>
             {/* Body Header section */}
             <BodyHeader
-                length={discover_weekly?.tracks.items?.length}
-                src={discover_weekly?.images[0].url}
-                name={discover_weekly?.name}
-                description={discover_weekly?.description}
-                infoName={discover_weekly?.owner?.display_name}
+                length={playing?.items?.length}
+                album_src={songs?.album?.images[0]?.url}
+                name={'Recently play songs'}
+                album_release_date={songs?.album?.release_date}
+                album_name={songs?.album?.name}
+                artists_name={songs?.artists[0]?.name}
+                duration_ms={songs?.duration_ms}
+                popularity={songs?.popularity}
             />
 
             {/* Music Play Button */}
-            <ButtonComponent />
+            <IFrame />
 
             {/* PlayLists Song Row  */}
             <hr />
             <div>
-                {discover_weekly?.tracks.items.length &&
-                    discover_weekly?.tracks.items.map((item, index) => (
-                        <BodyFooter key={index} track={item.track} added_at={item.added_at} />
+                {playing?.items.length &&
+                    playing?.items.map((item, index) => (
+                        <BodyFooter
+                            key={index}
+                            track={item.track}
+                            added_at={item.played_at}
+                            index={index + 1}
+                        />
                     ))}
             </div>
         </div>

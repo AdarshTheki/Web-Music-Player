@@ -2,7 +2,7 @@
     max-width: 90vw;
     margin: 10px auto;
 }
-.artists__lists .artists {
+.artists__lists .artists__item {
     cursor: pointer;
     padding: 10px;
     border-radius: 5px;
@@ -12,7 +12,7 @@
     text-align: center;
     gap: 30px;
 }
-.artists:hover {
+.artists__item:hover {
     border: 1px solid var(--black-500);
     background: var(--black-300);
 }
