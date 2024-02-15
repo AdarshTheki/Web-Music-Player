@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/Sidebar';
-import Footer from './Components/Footer/Footer';
 import Collection from './Page/Collection';
 import Playlist from './Page/Playlist';
 import Artists from './Page/Artists';
@@ -14,22 +13,19 @@ const Player = ({ spotify }) => {
     return (
         <BrowserRouter>
             <div className='player'>
-                <div className='player__body'>
-                    <div className='sidebar'>
-                        <Sidebar />
-                    </div>
-                    <div className='body'>
-                        <Header />
-                        <Routes>
-                            <Route path='/' element={<Home />} />
-                            <Route path='track/:trackId' element={<Tracks spotify={spotify} />} />
-                            <Route path='playlist/:playlistId' element={<Playlist />} />
-                            <Route path='collection/track' element={<Collection />} />
-                            <Route path='artists/:artistId' element={<Artists spotify={spotify} />} />
-                        </Routes>
-                    </div>
+                <div className='sidebar'>
+                    <Sidebar />
                 </div>
-                <Footer />
+                <div className='body'>
+                    <Header />
+                    <Routes>
+                        <Route path='/' element={<Home spotify={spotify}/>} />
+                        <Route path='track/:trackId' element={<Tracks spotify={spotify} />} />
+                        <Route path='playlist/:playlistId' element={<Playlist spotify={spotify}/>} />
+                        <Route path='collection/track' element={<Collection spotify={spotify}/>} />
+                        <Route path='artists/:artistsId' element={<Artists spotify={spotify} />} />
+                    </Routes>
+                </div>
             </div>
         </BrowserRouter>
     );

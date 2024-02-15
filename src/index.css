@@ -6,7 +6,7 @@
     --white-300: #ccc;
     --white-500: #a7a7a7;
     --black: #000;
-    --black-300: #333;
+    --black-300: rgb(40, 40, 40);
     --black-500: #555;
 }
 
@@ -23,24 +23,6 @@ body {
 }
 body::-webkit-scrollbar {
     display: none;
-}
-
-/*! Body Container */
-.body {
-    overflow-y: overlay;
-    color: aliceblue;
-    flex: 0.8;
-    height: 100%;
-    background-color: #121212;
-}
-
-.body::-webkit-scrollbar {
-    width: 6px;
-}
-
-.body::-webkit-scrollbar-thumb {
-    background-color: var(--black-300);
-    border-radius: 10px;
 }
 
 /*! line-clamp one line */
