@@ -1,32 +1,52 @@
-import React from 'react';
-import { useDataLayerValue } from '../Context/DataLayer';
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from 'react';
 import BodyHeader from '../Components/Body/BodyHeader';
 import BodyFooter from '../Components/Body/BodyFooter';
-import { ButtonComponent } from '../Components/Common/Button';
+import IFrame from '../Components/Common/IFrame';
+import { useParams } from 'react-router-dom';
 
-export default function Playlist() {
-    const [{ discover_weekly, items }] = useDataLayerValue();
+export default function Playlist({ spotify }) {
+    const { playlistId } = useParams();
+    const [playlists, setPlaylists] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchPlaylists() {
+            setLoading(true);
+            try {
+                const result = await spotify.getPlaylist(playlistId);
+                setPlaylists(result);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchPlaylists();
+    }, [spotify, playlistId]);
+
+    if (loading) return <h2>Loading data | Please wait...</h2>;
 
     return (
         <div>
             {/* Header Section */}
             <BodyHeader
-                length={items?.length}
-                description={discover_weekly?.description}
-                artists_name={discover_weekly.owner?.display_name}
-                artists_type={discover_weekly.owner?.type}
-                album_src={discover_weekly?.images[0].url}
-                name={discover_weekly?.name || '#NA'}
-                popularity={discover_weekly?.popularity}
+                length={playlists?.tracks?.items?.length}
+                description={playlists?.description}
+                artists_name={playlists?.owner?.display_name}
+                artists_type={playlists?.owner?.type}
+                album_src={playlists?.images[0]?.url}
+                name={playlists?.name || '#NA'}
+                popularity={playlists?.popularity}
             />
             {/* Button Play Section */}
-            <div style={{ display: 'flex', gap: 20, margin: '20px 0' }}>
-                <ButtonComponent />
+            <div>
+                <IFrame />
             </div>
 
             <hr />
             {/* Body Row Section */}
-            {items?.map((item, index) => (
+            {playlists?.tracks?.items?.map((item, index) => (
                 <BodyFooter key={index} track={item?.track} added_at={item?.added_at} />
             ))}
         </div>

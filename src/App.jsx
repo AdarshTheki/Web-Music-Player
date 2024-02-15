@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 const spotify = new SpotifyWebApi();
 
 const App = () => {
-    const [{ token, id }, dispatch] = useDataLayerValue();
+    const [{ token }, dispatch] = useDataLayerValue();
 
     useEffect(() => {
         const hash = getTokenFromUrl();
@@ -28,29 +28,19 @@ const App = () => {
                 dispatch({ type: 'SET_PLAYLISTS', playLists: playlists?.items });
             });
 
-            spotify.getMySavedTracks().then((likesTrack) => {
-                dispatch({ type: 'SET_COLLECTION', collection: likesTrack });
+            spotify.getMyTopArtists().then((artist) => {
+                dispatch({ type: 'SET_ARTISTS_LIST', artistsList: artist?.items });
             });
 
-            spotify.getMyCurrentPlaybackState().then((res) => {
+            spotify.getMyRecentlyPlayedTracks().then((res) => {
                 dispatch({ type: 'SET_PLAYING', playing: res });
+                dispatch({ type: 'SET_SONGS', songs: res?.items[0]?.track });
             });
         } else {
             // Handle case where access token is missing
             console.error('Access token not found in URL hash');
         }
     }, []);
-
-    useEffect(() => {
-        if (!token) {
-            return;
-        }
-        spotify.getPlaylist(id || '5V8dA2hq3hFgNFR5SM7Enb').then((resp) => {
-            dispatch({ type: 'SET_DISCOVER_WEEKLY', discover_weekly: resp });
-            dispatch({ type: 'SET_ITEMS', items: resp?.tracks?.items });
-        });
-        // spotify.getArtistTopTracks()
-    }, [id, token]);
 
     return <div>{token ? <Player spotify={spotify} /> : <Login />}</div>;
 };

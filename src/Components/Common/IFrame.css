@@ -1,0 +1,16 @@
+.icons {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+}
+.react-icons {
+    font-size: 2rem;
+    padding: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition: background 0.3s ease-out;
+}
+.react-icons.active {
+    color: var(--green);
+}

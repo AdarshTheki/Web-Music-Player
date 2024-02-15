@@ -5,20 +5,11 @@
 - User Authentications
 - Spotify API go to the [spotify developer](https://developer.spotify.com/).
 - Responsive Design
-- Material UI (icons)
+- React Icons
 - React Context API (like Redux)
 - Modern Technology
 - React Hook Functional (Hooks, State)
 - And also [npm install spotify-web-api-js]()
-- npm i @material-ui/icons
-
-```js
-// Firebase Project Name
-"projects": {
-    "default": "spotify-997e3"
-}
-```
-### https://spotify-997e3.web.app/
 
 # Spotify Clone Project Plan
 

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import lazy from '../../assets/songs.png';
 
@@ -17,5 +18,6 @@ export default function LazyImage({ src, alt = 'lazyImage' }) {
             newImage.onload = null;
         };
     }, [src]);
+
     return <img src={imgSrc} alt={alt} loading='lazy' className={customClass} />;
 }

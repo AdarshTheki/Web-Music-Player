@@ -1,23 +1,41 @@
-import React from 'react';
-import { useDataLayerValue } from '../Context/DataLayer';
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState } from 'react';
 import BodyHeader from '../Components/Body/BodyHeader';
 import BodyFooter from '../Components/Body/BodyFooter';
-import { ButtonComponent } from '../Components/Common/Button';
+import IFrame from '../Components/Common/IFrame';
 
-export default function Collection() {
-    const [{ collection }] = useDataLayerValue();
+export default function Collection({ spotify }) {
+    const [collection, setCollection] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchCollections() {
+            setLoading(true);
+            try {
+                const result = await spotify.getMySavedTracks();
+                setCollection(result.items);
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchCollections();
+    }, [spotify]);
+
+    if (loading) return <h2>Loading data | Please wait...</h2>;
 
     return (
         <div>
             {/* Header Section */}
-            <BodyHeader length={collection?.total} />
+            <BodyHeader length={collection?.length} />
             {/* Button Play Section */}
-            <ButtonComponent />
+            <IFrame />
             <hr />
             {/* Body Row Section */}
             <div>
-                {collection?.items?.length &&
-                    collection?.items?.map((item, index) => (
+                {collection?.length &&
+                    collection?.map((item, index) => (
                         <BodyFooter key={index} track={item?.track} added_at={item?.added_at} />
                     ))}
             </div>

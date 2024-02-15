@@ -1,18 +1,11 @@
+import { NavLink, useLocation } from 'react-router-dom';
+import logo from '../../assets/spotify_logo.svg';
 import { useDataLayerValue } from '../../Context/DataLayer';
 import './Sidebar.css';
-import { MdLibraryMusic, MdAudiotrack } from 'react-icons/md';
-import logo from '../../assets/spotify_logo.svg';
-import { NavLink, useNavigate } from 'react-router-dom';
-import SideBarList from './SideBarList.jsx';
 
 const Sidebar = () => {
-    const Navigate = useNavigate();
-    const [{ playLists, id, collection }, dispatch] = useDataLayerValue();
-
-    const setNullId = () => {
-        dispatch({ type: 'SET_PLAYLIST_ID', id: null });
-        Navigate('/collection/track');
-    };
+    const { pathname } = useLocation();
+    const [{ playLists, collection, artistsList }] = useDataLayerValue();
 
     return (
         <div>
@@ -20,35 +13,66 @@ const Sidebar = () => {
                 <img src={logo} alt='image_logo' className='sidebar__logo' />
             </NavLink>
             {/* Like Collection */}
-            <div
-                onClick={() => setNullId()}
-                className={`SideBarList ${id !== null ? '' : 'activeSideBarList'}`}>
-                <div className='SideBarList__title'>
-                    <img
-                        src='https://misc.scdn.co/liked-songs/liked-songs-640.png'
-                        alt='like'
-                        width={50}
-                        className='SideBarList__icon'
-                    />
-                    <div>
-                        <h5 className='line-clamp'>Liked Songs</h5>
-                        <p className='span line-clamp'>playlist ● {collection?.total} songs</p>
+            <div className='sidebar__container'>
+                <NavLink
+                    to='/collection/track'
+                    className={`sidebar__item ${pathname === '/collection/track' ? 'active' : ''}`}>
+                    <div className='sidebar__img'>
+                        <img
+                            src='https://misc.scdn.co/liked-songs/liked-songs-640.png'
+                            alt='like'
+                            width={50}
+                        />
                     </div>
-                </div>
+                    <div className='sidebar__detail'>
+                        <strong className='line-clamp'>Liked Songs</strong>
+                        <p className='line-clamp'>playlist ● {collection?.total} songs</p>
+                    </div>
+                </NavLink>
             </div>
-            {/* PlayLists  */}
-            <div>
-                {playLists?.map((e, index) => {
-                    return <SideBarList key={index} {...e} />;
-                })}
-            </div>
-            {/*  */}
-            <section className='sidebar__music' style={{ margin: 'auto', padding: '20px 0' }}>
-                <MdAudiotrack fontSize={24} />
-                <NavLink to={'artists/123'}>Artists</NavLink>
+            {/* PlayLists Lists  */}
+            <section className='sidebar__container'>
+                {playLists?.length &&
+                    playLists?.map((playlist) => (
+                        <NavLink
+                            to={`/playlist/${playlist?.id}`}
+                            key={playlist?.id}
+                            className={`sidebar__item ${
+                                pathname === `/playlist/${playlist?.id}` ? 'active' : ''
+                            }`}>
+                            <div className='sidebar__img'>
+                                <img src={playlist?.images[0]?.url} alt={playlist?.id} width={50} />
+                            </div>
+                            <div className='sidebar__detail'>
+                                <strong className='line-clamp'>{playlist?.name}</strong>
+                                <p className='line-clamp'>
+                                    {playlist?.type} ● {playlist?.owner?.display_name}
+                                </p>
+                            </div>
+                        </NavLink>
+                    ))}
+            </section>
+            {/* Artists Lists */}
+            <section className='sidebar__container'>
+                {artistsList?.length &&
+                    artistsList?.map((item) => (
+                        <NavLink
+                            to={`/artists/${item?.id}`}
+                            key={item?.name}
+                            className={`sidebar__item ${
+                                pathname === `/artists/${item?.id}` ? 'active' : ''
+                            }`}>
+                            <div className='sidebar__img'>
+                                <img src={item?.images[2]?.url} alt={item?.name} width={100} />
+                            </div>
+                            <div className='sidebar__detail'>
+                                <p className='line-clamp'>Artist</p>
+                                <strong className='line-clamp'>{item?.name}</strong>
+                            </div>
+                        </NavLink>
+                    ))}
             </section>
         </div>
     );
 };
-
 export default Sidebar;
