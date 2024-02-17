@@ -18,11 +18,12 @@
 .bodyHeader__detail h2 {
     font-size: calc(6px + 4vw);
     padding: 0;
-    line-height: 1;
+    line-height: 1.5;
 }
 
 .bodyHeader__detail p {
     font-size: 0.8rem;
+    text-transform: capitalize;
 }
 .bodyHeader__other {
     margin-top: 10px;
@@ -32,6 +33,7 @@
     column-gap: 15px;
 }
 .bodyHeader__other span {
+    color: var(--white-300);
     text-transform: capitalize;
     font-size: 0.8rem;
 }
@@ -43,6 +45,17 @@
     height: 30px;
     object-fit: contain;
     border-radius: 50%;
+}
+.bodyHeader__other a {
+    font: sans-serif;
+    font-size: 1rem;
+    color: var(--white);
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+.bodyHeader__other a:hover {
+    color: var(--green);
+    text-decoration: underline;
 }
 @media (max-width: 30em) {
     .bodyHeader {
