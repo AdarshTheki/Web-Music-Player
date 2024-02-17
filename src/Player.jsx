@@ -1,12 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/Sidebar';
-import Collection from './Page/Collection';
-import Playlist from './Page/Playlist';
-import Artists from './Page/Artists';
-import Tracks from './Page/Tracks';
-import Home from './Page/Home';
-import Header from './Components/Body/Header';
+import Header from './Components/Header/Header';
+import { Collection, Playlist, Artists, Tracks, Home, Album } from './Page';
 import './Player.css';
 
 const Player = ({ spotify }) => {
@@ -17,13 +13,17 @@ const Player = ({ spotify }) => {
                     <Sidebar />
                 </div>
                 <div className='body'>
-                    <Header />
+                    <Header spotify={spotify} />
                     <Routes>
-                        <Route path='/' element={<Home spotify={spotify}/>} />
+                        <Route path='/' element={<Home spotify={spotify} />} />
                         <Route path='track/:trackId' element={<Tracks spotify={spotify} />} />
-                        <Route path='playlist/:playlistId' element={<Playlist spotify={spotify}/>} />
-                        <Route path='collection/track' element={<Collection spotify={spotify}/>} />
+                        <Route
+                            path='playlist/:playlistId'
+                            element={<Playlist spotify={spotify} />}
+                        />
+                        <Route path='collection/track' element={<Collection spotify={spotify} />} />
                         <Route path='artists/:artistsId' element={<Artists spotify={spotify} />} />
+                        <Route path='album/:albumId' element={<Album spotify={spotify} />} />
                     </Routes>
                 </div>
             </div>
