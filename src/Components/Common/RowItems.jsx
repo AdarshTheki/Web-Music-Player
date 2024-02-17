@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaPlayCircle } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
-import './rowItems.css';
+import './RowItems.css';
 
 export default function RowItems({
     external_urls,
