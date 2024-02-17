@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import BodyHeader from '../Components/Body/BodyHeader';
 import BodyFooter from '../Components/Body/BodyFooter';
 import IFrame from '../Components/Common/IFrame';
+import Skeletons from '../Components/Loading/Skeleton';
 
 export default function Collection({ spotify }) {
     const [collection, setCollection] = useState([]);
@@ -23,7 +24,7 @@ export default function Collection({ spotify }) {
         fetchCollections();
     }, [spotify]);
 
-    if (loading) return <h2>Loading data | Please wait...</h2>;
+    if (loading) return <Skeletons />;
 
     return (
         <div>
@@ -36,7 +37,12 @@ export default function Collection({ spotify }) {
             <div>
                 {collection?.length &&
                     collection?.map((item, index) => (
-                        <BodyFooter key={index} track={item?.track} added_at={item?.added_at} />
+                        <BodyFooter
+                            key={index}
+                            track={item?.track}
+                            added_at={item?.added_at || item?.played_at}
+                            index={index + 1}
+                        />
                     ))}
             </div>
         </div>

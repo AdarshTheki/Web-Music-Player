@@ -47,7 +47,7 @@ body::-webkit-scrollbar {
 
 /* Lazy Loading Image */
 .loading__image {
-    filter: blur(5px);
+    filter: blur(2px);
 }
 .loaded__image {
     filter: blur(0px);

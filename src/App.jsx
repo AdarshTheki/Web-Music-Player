@@ -33,7 +33,7 @@ const App = () => {
             });
 
             spotify.getMyRecentlyPlayedTracks().then((res) => {
-                dispatch({ type: 'SET_PLAYING', playing: res });
+                dispatch({ type: 'SET_PLAYING', playing: res?.items });
                 dispatch({ type: 'SET_SONGS', songs: res?.items[0]?.track });
             });
         } else {
