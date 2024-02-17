@@ -1,44 +1,49 @@
 /* eslint-disable react/prop-types */
 import { useDataLayerValue } from '../Context/DataLayer.jsx';
 import IFrame from '../Components/Common/IFrame.jsx';
-import BodyFooter from '../Components/Body/BodyFooter.jsx';
 import BodyHeader from '../Components/Body/BodyHeader.jsx';
+import RowItems from '../Components/Common/RowItems.jsx';
 
-const Body = () => {
-    const [{ playing, songs }] = useDataLayerValue();
+export default function Home({ spotify }) {
+    const [{ playing, artistsList, playLists, songs }] = useDataLayerValue();
 
     return (
         <div>
             {/* Body Header section */}
-            <BodyHeader
-                length={playing?.items?.length}
-                album_src={songs?.album?.images[0]?.url}
-                name={'Recently play songs'}
-                album_release_date={songs?.album?.release_date}
-                album_name={songs?.album?.name}
-                artists_name={songs?.artists[0]?.name}
-                duration_ms={songs?.duration_ms}
-                popularity={songs?.popularity}
-            />
-
+            <BodyHeader length={playing?.items?.length} {...songs} type={'Recently Play Song'} />
             {/* Music Play Button */}
             <IFrame />
 
             {/* PlayLists Song Row  */}
-            <hr />
-            <div>
-                {playing?.items.length &&
-                    playing?.items.map((item, index) => (
-                        <BodyFooter
-                            key={index}
-                            track={item.track}
-                            added_at={item.played_at}
-                            index={index + 1}
-                        />
-                    ))}
+            <div style={{ padding: '0 20px' }}>
+                <h3>Top Play Artists</h3>
+                <div className='rowItems__container'>
+                    {artistsList
+                        ?.sort((a, b) => b?.followers.total - a?.followers.total)
+                        ?.map((item, index) => (
+                            <RowItems key={index} {...item} type={'artists'} />
+                        ))}
+                </div>
+                <br />
+                <h3>Top Play Playlists</h3>
+                <div className='rowItems__container'>
+                    {playLists
+                        ?.filter((item) => item?.owner?.display_name !== 'Spotify')
+                        ?.map((item, index) => (
+                            <RowItems key={index} {...item} type={'playlist'} />
+                        ))}
+                </div>
+                <br />
+                <h3>Recently Play Tracks</h3>
+                <div className='rowItems__container'>
+                    {playing
+                        ?.filter((item) => item?.track.album.name)
+                        ?.map((item, index) => (
+                            <RowItems key={index} {...item?.track.album} type={'album'} />
+                        ))}
+                </div>
+                <br />
             </div>
         </div>
     );
-};
-
-export default Body;
+}
