@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import BodyHeader from '../Components/Body/BodyHeader';
 import BodyFooter from '../Components/Body/BodyFooter';
-import IFrame from '../Components/Common/IFrame';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -37,7 +36,6 @@ export default function Album({ spotify }) {
                 popularity={album?.popularity}
                 type={album?.type}
             />
-            <IFrame/>
             <div>
                 {tracks?.map((items, index) => (
                     <BodyFooter

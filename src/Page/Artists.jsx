@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BodyFooter from '../Components/Body/BodyFooter';
 import BodyHeader from '../Components/Body/BodyHeader';
-import IFrame from '../Components/Common/IFrame';
 import Skeleton from '../Components/Loading/Skeleton';
 
 export default function Artists({ spotify }) {
@@ -42,8 +41,6 @@ export default function Artists({ spotify }) {
                 duration_ms={artists?.duration_ms}
                 followers={artists?.followers}
             />
-            {/* Songs Play */}
-            <IFrame />
             {/* Artists Lists */}
             {tracks.map((item, index) => (
                 <BodyFooter key={item.id} track={item} added_at={'04-06-2023'} index={index + 1} />

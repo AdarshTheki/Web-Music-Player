@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom';
 import { convertDate, convertTime } from '../../utils';
 import LazyImage from '../Common/LazyImage';
 import { useDataLayerValue } from '../../Context/DataLayer';
-import './BodyFooter.css';
 
 export default function BodyFooter({ track, added_at, index }) {
     const [{}, dispatch] = useDataLayerValue();

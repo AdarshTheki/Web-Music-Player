@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import BodyHeader from '../Components/Body/BodyHeader';
 import BodyFooter from '../Components/Body/BodyFooter';
-import IFrame from '../Components/Common/IFrame';
 import Skeletons from '../Components/Loading/Skeleton';
 
 export default function Collection({ spotify }) {
@@ -30,9 +29,7 @@ export default function Collection({ spotify }) {
         <div>
             {/* Header Section */}
             <BodyHeader length={collection?.length} />
-            {/* Button Play Section */}
-            <IFrame />
-            <hr />
+            
             {/* Body Row Section */}
             <div>
                 {collection?.length &&

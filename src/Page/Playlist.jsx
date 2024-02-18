@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import BodyHeader from '../Components/Body/BodyHeader';
 import BodyFooter from '../Components/Body/BodyFooter';
-import IFrame from '../Components/Common/IFrame';
 import Skeleton from '../Components/Loading/Skeleton';
 
 export default function Playlist({ spotify }) {
@@ -44,12 +43,6 @@ export default function Playlist({ spotify }) {
                 followers={playlists?.followers}
                 duration_ms={calculateTime(playlists?.tracks?.items)}
             />
-            {/* Button Play Section */}
-            <div>
-                <IFrame />
-            </div>
-
-            <hr />
             {/* Body Row Section */}
             {playlists?.tracks?.items?.map((item, index) => (
                 <BodyFooter

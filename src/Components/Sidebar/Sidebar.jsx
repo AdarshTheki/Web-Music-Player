@@ -1,7 +1,6 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../assets/spotify_logo.svg';
 import { useDataLayerValue } from '../../Context/DataLayer';
-import './Sidebar.css';
 
 const Sidebar = () => {
     const { pathname } = useLocation();
@@ -10,7 +9,7 @@ const Sidebar = () => {
     return (
         <div>
             <NavLink to='/'>
-                <img src={logo} alt='image_logo' className='sidebar__logo' />
+                <img src={logo} alt='image_logo' className='sidebar__logoImg' />
             </NavLink>
             {/* Like Collection */}
             <div className='sidebar__container'>
