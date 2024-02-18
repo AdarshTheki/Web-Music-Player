@@ -1,107 +1,61 @@
-# Getting Spotify Music App with ReactJS
+## Web Music Player
 
-## What you'll be learn & what's in this build
-
-- User Authentications
-- Spotify API go to the [spotify developer](https://developer.spotify.com/).
-- Responsive Design
-- React Icons
-- React Context API (like Redux)
-- Modern Technology
-- React Hook Functional (Hooks, State)
-- And also [npm install spotify-web-api-js]()
-
-# Spotify Clone Project Plan
-
-## Introduction
-
-Welcome to the documentation for my Spotify clone project. In this project, I aim to recreate the core features of the Spotify music streaming service using HTML, CSS, JavaScript, and the Fetch API.
+This is a Spotify clone built using React.js. It mimics some of the basic features of the Spotify web application, allowing users to explore music, view recent play tracks, albums, playlists, artists, and tracks.
 
 ## Features
 
-### 1. User Authentication
+-   **Login and Navigation:** Users can log in to their Spotify account and navigate through various pages.
+-   **Home:** Users can explore recommended playlists and new releases.
+-   **Recent Play Tracks:** Users can view their recently played tracks.
+-   **Albums:** Users can browse through albums and view details.
+-   **Playlists:** Users can discover playlists and view details.
+-   **Artists:** Users can explore artists and their works.
+-   **Tracks:** Users can search for tracks and play them.
+-   **Sidebar:** Users can access different sections of the application from the sidebar.
 
-- [ ] Implement user registration and login functionality.
-- [ ] Securely store user credentials.
-- [ ] Allow users to reset their passwords.
+## Technologies Used
 
-### 2. Music Playback
+-   React.js
+-   react-icons
+-   spotify-web-api-js
+-   react-loading-skeleton
 
-- [ ] Fetch and display a list of songs from a music database (e.g., Spotify's API).
-- [ ] Allow users to play, pause, and skip songs.
-- [ ] Display the current song's title, artist, and album artwork.
+## Installation
 
-### 3. Playlists and Favorites
+1. Clone the repository:
 
-- [ ] Enable users to create, edit, and delete playlists.
-- [ ] Allow users to add songs to their playlists.
-- [ ] Implement a "favorites" feature to save favorite songs.
+    ```bash
+    git clone https://github.com/AdarshTheki/Web-Music-Player.git
+    ```
 
-### 4. Search Functionality
+2. Navigate to the project directory:
 
-- [ ] Implement a search bar to look up songs, artists, and albums.
-- [ ] Display search results with relevant information.
+    ```bash
+    cd Web-Music-Player
+    ```
 
-### 5. User Profile
+3. Install dependencies:
 
-- [ ] Create user profiles with user information and profile pictures.
-- [ ] Allow users to edit their profiles.
+    ```bash
+    npm install
+    ```
 
-### 6. Responsive Design
+4. Run the development server:
+    ```bash
+    npm run dev
+    ```
+5. Open the application in your browser at [http://localhost:3000]().
 
-- [ ] Ensure that the website is responsive and works well on various devices and screen sizes.
+## Usage
 
-### 7. Music Recommendation
+-   Log in with your Spotify account.
+-   Navigate through different sections using the sidebar.
+-   Explore recommended playlists, new releases, recent play tracks, albums, artists, and tracks.
 
-- [ ] Implement a recommendation system to suggest songs based on user preferences.
+## Contributing
 
-### 8. Music Player Controls
+Contributions are welcome! Please feel free to submit a pull request.
 
-- [ ] Add volume control and a progress bar for song playback.
-- [ ] Display playback time and allow users to seek within songs.
+## License
 
-### 9. Notifications
-
-- [ ] Implement notifications for user actions (e.g., adding songs to playlists).
-
-### 10. Error Handling
-
-- [ ] Provide meaningful error messages and handle edge cases gracefully.
-
-## Components
-
-- [ ] Create reusable components for the user interface, such as header, footer, and music player components.
-- [ ] Separate the application into logical modules for improved maintainability.
-
-## Data Fetching
-
-- [ ] Utilize the Fetch API to retrieve data from a music database or API.
-- [ ] Handle API requests and responses effectively.
-
-## Technologies
-
-- HTML
-- CSS
-- JavaScript
-- Fetch API
-
-## Tools
-
-- [ ] Choose a code editor (e.g., Visual Studio Code).
-- [ ] Set up version control using Git and GitHub.
-- [ ] Host the project on a web hosting platform (e.g., Netlify, Vercel).
-
-## Next Steps
-
-- [ ] Start by setting up the project structure and creating the necessary HTML, CSS, and JavaScript files.
-- [ ] Implement user authentication and user profile features.
-- [ ] Begin working on the music playback functionality and user interface.
-- [ ] Continuously test and improve the application as you add new features.
-
-## Resources
-
-- [Spotify API Documentation](https://developer.spotify.com/documentation/web-api/)
-- [HTML, CSS, and JavaScript Tutorials](https://developer.mozilla.org/)
-- [Netlify](https://www.netlify.com/) (for hosting)
-
-Feel free to add more features or details to this plan as your project evolves. Good luck with your Spotify clone project!
+This project is licensed under the MIT License - see the [LICENSE]() file for details.

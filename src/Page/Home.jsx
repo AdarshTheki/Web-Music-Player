@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useDataLayerValue } from '../Context/DataLayer.jsx';
-import IFrame from '../Components/Common/IFrame.jsx';
 import BodyHeader from '../Components/Body/BodyHeader.jsx';
 import RowItems from '../Components/Common/RowItems.jsx';
 
@@ -11,8 +10,6 @@ export default function Home({ spotify }) {
         <div>
             {/* Body Header section */}
             <BodyHeader length={playing?.items?.length} {...songs} type={'Recently Play Song'} />
-            {/* Music Play Button */}
-            <IFrame />
 
             {/* PlayLists Song Row  */}
             <div style={{ padding: '0 20px' }}>

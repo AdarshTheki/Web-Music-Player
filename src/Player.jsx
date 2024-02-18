@@ -2,17 +2,16 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Sidebar from './Components/Sidebar/Sidebar';
 import Header from './Components/Header/Header';
-import { Collection, Playlist, Artists, Tracks, Home, Album } from './Page';
-import './Player.css';
+import { Collection, Playlist, Artists, Tracks, Home, Album, NoPage } from './Page';
 
 const Player = ({ spotify }) => {
     return (
         <BrowserRouter>
             <div className='player'>
-                <div className='sidebar'>
+                <div className='sidebar scrollbar'>
                     <Sidebar />
                 </div>
-                <div className='body'>
+                <div className='body scrollbar'>
                     <Header spotify={spotify} />
                     <Routes>
                         <Route path='/' element={<Home spotify={spotify} />} />
@@ -24,6 +23,7 @@ const Player = ({ spotify }) => {
                         <Route path='collection/track' element={<Collection spotify={spotify} />} />
                         <Route path='artists/:artistsId' element={<Artists spotify={spotify} />} />
                         <Route path='album/:albumId' element={<Album spotify={spotify} />} />
+                        <Route path='*' element={<NoPage />} />
                     </Routes>
                 </div>
             </div>
