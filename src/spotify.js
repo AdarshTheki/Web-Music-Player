@@ -4,10 +4,10 @@ export const authEndPoint = 'https://accounts.spotify.com/authorize?';
 // const redirectUri = 'http://localhost:3000';
 
 // HOSTED OPTIONS
-// const redirectUri = 'https://spotify-997e3.web.app';
+const redirectUri = 'https://spotify-997e3.web.app';
 
 // HOSTED OPTIONS
-const redirectUri = 'https://spotify-music-player-react.netlify.app';
+// const redirectUri = 'https://spotify-music-player-react.netlify.app';
 
 // const clientId = '7a89545e159d4824b2787cf8ae5aa200'; // Adarsh Account
 const clientId = '0932d71c3f1741b7b0812b953904be50'; // In Adarsh549 Account

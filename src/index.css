@@ -111,7 +111,7 @@ body::-webkit-scrollbar {
 */
 .player {
     display: flex;
-    height: 100vh;
+    height: 90vh;
 }
 
 /*
@@ -206,14 +206,16 @@ body::-webkit-scrollbar {
 
 /* ! Body Header */
 .bodyHeaderImage {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover !important;
-}
-.bodyHeaderImageGrd {
-    background: radial-gradient(circle, rgba(18, 18, 18, 0.5) 0%, rgba(18, 18, 18) 100%) !important;
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: -1;
+    filter: blur(80px);
 }
 .bodyHeader {
+    z-index: 2;
     color: var(--white);
     width: 100%;
     display: flex;
@@ -280,6 +282,19 @@ body::-webkit-scrollbar {
 }
 
 /* ! Body Footer */
+.bodyFooter-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #666;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+}
+.bodyFooter-header > div {
+    text-transform: capitalize;
+    font-size: 1rem;
+    color: #fff;
+}
+
 .bodyFooter {
     width: 100%;
     display: flex;
@@ -289,27 +304,13 @@ body::-webkit-scrollbar {
     font-size: 14px;
     font-weight: 400;
     padding: 5px 20px;
-    transition: all 0.3s linear;
     border-radius: 5px;
     border: 1px solid transparent;
+    cursor: pointer;
 }
 
 .bodyFooter:hover {
     border: 1px solid var(--black-500);
-    background: var(--black-300);
-}
-
-.bodyFooter > .col1 {
-    flex: 2;
-}
-.bodyFooter > .col2 {
-    flex: 1;
-}
-.bodyFooter > .col3 {
-    flex: 0.8;
-}
-.bodyFooter > .col4 {
-    flex: 0.5;
 }
 
 .bodyFooter .col1 {
@@ -350,17 +351,20 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 60em) {
-    .bodyFooter > .col3 {
+    .bodyFooter > .col3,
+    .bodyFooter-header > div:nth-child(3) {
         display: none;
     }
 }
 @media (max-width: 50em) {
-    .bodyFooter > .col2 {
+    .bodyFooter > .col2,
+    .bodyFooter-header > div:nth-child(2) {
         display: none;
     }
 }
 @media (max-width: 25em) {
-    .bodyFooter > .col4 {
+    .bodyFooter > .col4,
+    .bodyFooter-header > div:nth-child(4) {
         display: none;
     }
 }
