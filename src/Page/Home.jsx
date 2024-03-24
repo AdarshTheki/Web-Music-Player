@@ -4,12 +4,12 @@ import BodyHeader from '../Components/Body/BodyHeader.jsx';
 import RowItems from '../Components/Common/RowItems.jsx';
 
 export default function Home({ spotify }) {
-    const [{ playing, artistsList, playLists, songs }] = useDataLayerValue();
+    const [{ playing, artistsList, playLists }] = useDataLayerValue();
 
     return (
         <div>
             {/* Body Header section */}
-            <BodyHeader length={playing?.items?.length} {...songs} type={'Recently Play Song'} />
+            <BodyHeader length={playing?.items?.length} type={'Recently Play Song'} />
 
             {/* PlayLists Song Row  */}
             <div style={{ padding: '0 20px' }}>

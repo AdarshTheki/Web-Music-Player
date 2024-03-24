@@ -16,7 +16,7 @@ export default function Album({ spotify }) {
                 const result = await spotify.getAlbum(albumId);
                 setAlbum(result);
                 const result1 = await spotify.getAlbumTracks(albumId);
-                setTracks(result1?.items);
+                setTracks(result1?.items?.map((item) => ({ track: item })));
             } catch (error) {
                 console.error(error);
             }
@@ -24,28 +24,13 @@ export default function Album({ spotify }) {
         getAlbums();
     }, [spotify, albumId]);
 
+    console.log(tracks)
+
     return (
         <div>
             {/* Header Section */}
-            <BodyHeader
-                name={album?.name}
-                artists={album?.artists}
-                images={album?.images}
-                description={album?.label}
-                duration_ms={album?.duration_ms}
-                popularity={album?.popularity}
-                type={album?.type}
-            />
-            <div>
-                {tracks?.map((items, index) => (
-                    <BodyFooter
-                        key={index}
-                        index={index + 1}
-                        track={items}
-                        added_at={'2023-04-22'}
-                    />
-                ))}
-            </div>
+            <BodyHeader {...album} />
+            <BodyFooter data={tracks} />
         </div>
     );
 }

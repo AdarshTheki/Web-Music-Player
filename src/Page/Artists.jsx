@@ -18,7 +18,7 @@ export default function Artists({ spotify }) {
                 const artists = await spotify.getArtist(artistsId);
                 const tracksList = await spotify?.getArtistTopTracks(artistsId, 'in');
                 setArtists(artists);
-                setTracks(tracksList?.tracks);
+                setTracks(tracksList?.tracks.map((item) => ({ track: item })));
             } catch (error) {
                 console.error(error);
             } finally {
@@ -33,18 +33,8 @@ export default function Artists({ spotify }) {
     return (
         <div>
             {/* Header Section */}
-            <BodyHeader
-                name={artists?.name}
-                images={artists?.images}
-                type={artists?.type}
-                popularity={artists?.popularity}
-                duration_ms={artists?.duration_ms}
-                followers={artists?.followers}
-            />
-            {/* Artists Lists */}
-            {tracks.map((item, index) => (
-                <BodyFooter key={item.id} track={item} added_at={'04-06-2023'} index={index + 1} />
-            ))}
+            <BodyHeader {...artists} />
+            <BodyFooter data={tracks} />
         </div>
     );
 }
