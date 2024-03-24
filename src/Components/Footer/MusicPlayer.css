@@ -1,0 +1,48 @@
+.footer {
+    height: 10vh;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    background: #000;
+}
+.footer-detail {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 300px;
+}
+.footer-detail a {
+    color: #fff;
+}
+.footer-detail img {
+    width: 60px;
+    display: block;
+}
+.footer-player {
+    flex: 1;
+}
+.footer-player .controls,
+.progress {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.progress .audio-progress {
+    width: 80%;
+    max-width: 400px;
+    cursor: pointer;
+}
+
+.controls svg {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+    transition: all 0.3s ease-out;
+}
+.controls svg:hover {
+    color: var(--green);
+}
