@@ -25,16 +25,20 @@ const App = () => {
             });
 
             spotify.getUserPlaylists().then((playlists) => {
-                dispatch({ type: 'SET_PLAYLISTS', playLists: playlists?.items });
+                dispatch({ type: 'SET_PLAYLISTS', payload: playlists?.items });
+            });
+
+            spotify.getMySavedTracks().then((collection) => {
+                dispatch({ type: 'SET_COLLECTION', payload: collection?.items });
             });
 
             spotify.getMyTopArtists().then((artist) => {
-                dispatch({ type: 'SET_ARTISTS_LIST', artistsList: artist?.items });
+                dispatch({ type: 'SET_ARTISTS_LIST', payload: artist?.items });
             });
 
-            spotify.getMyRecentlyPlayedTracks().then((res) => {
-                dispatch({ type: 'SET_PLAYING', playing: res?.items });
-                dispatch({ type: 'SET_SONGS', songs: res?.items[0]?.track });
+            spotify.getMyRecentlyPlayedTracks().then((playing) => {
+                dispatch({ type: 'SET_RECENT_TRACKS', payload: playing?.items });
+                dispatch({ type: 'SET_SONGS', payload: playing?.items[0].track });
             });
         } else {
             // Handle case where access token is missing

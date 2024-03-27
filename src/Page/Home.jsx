@@ -1,16 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useDataLayerValue } from '../Context/DataLayer.jsx';
-import BodyHeader from '../Components/Body/BodyHeader.jsx';
+import BodyFooter from '../Components/Body/BodyFooter.jsx';
 import RowItems from '../Components/Common/RowItems.jsx';
 
-export default function Home({ spotify }) {
-    const [{ playing, artistsList, playLists, songs }] = useDataLayerValue();
+export default function Home() {
+    const [{ recentTracks, artistsList, playLists }] = useDataLayerValue();
 
     return (
         <div>
-            {/* Body Header section */}
-            <BodyHeader length={playing?.items?.length} {...songs} type={'Recently Play Song'} />
-
             {/* PlayLists Song Row  */}
             <div style={{ padding: '0 20px' }}>
                 <h3>Top Play Artists</h3>
@@ -22,7 +19,7 @@ export default function Home({ spotify }) {
                         ))}
                 </div>
                 <br />
-                <h3>Top Play Playlists</h3>
+                <h3>Your Playlists</h3>
                 <div className='rowItems__container'>
                     {playLists
                         ?.filter((item) => item?.owner?.display_name !== 'Spotify')
@@ -32,14 +29,8 @@ export default function Home({ spotify }) {
                 </div>
                 <br />
                 <h3>Recently Play Tracks</h3>
-                <div className='rowItems__container'>
-                    {playing
-                        ?.filter((item) => item?.track.album.name)
-                        ?.map((item, index) => (
-                            <RowItems key={index} {...item?.track.album} type={'album'} />
-                        ))}
-                </div>
                 <br />
+                <BodyFooter data={recentTracks} />
             </div>
         </div>
     );

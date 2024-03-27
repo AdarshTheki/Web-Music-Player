@@ -19,7 +19,7 @@ export default function RowItems({
         <NavLink to={`/${type}/${id}`} className='rowItems'>
             <div className='rowItems__img'>
                 <img src={images[0]?.url} alt={name} />
-                <p>{followers.total.toLocaleString('en-us', Number)}K</p>
+                <p>{followers.total.toLocaleString('en-us', Number)}</p>
                 <FaPlayCircle />
             </div>
             <div className='rowItems__detail'>

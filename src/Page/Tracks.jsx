@@ -18,7 +18,7 @@ export default function Tracks({ spotify }) {
             const tracks = await spotify.getTrack(trackId);
             setTracks(tracks);
             const result = await spotify.getRecommendations({ seed_tracks: trackId });
-            setRecommended(result?.tracks);
+            setRecommended(result?.tracks.map((item) => ({ track: item })));
         } catch (error) {
             console.log(error);
         } finally {
@@ -35,11 +35,7 @@ export default function Tracks({ spotify }) {
     return (
         <div>
             <BodyHeader {...tracks} />
-            <div>
-                {recommended?.map((item, index) => (
-                    <BodyFooter key={index} track={item} index={index + 1} />
-                ))}
-            </div>
+            <BodyFooter data={recommended} />
         </div>
     );
 }
