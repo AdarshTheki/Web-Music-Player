@@ -5,8 +5,8 @@ import './Header.css';
 import { FaSearch } from 'react-icons/fa';
 import { IoCloseCircle } from 'react-icons/io5';
 import { useDataLayerValue } from '../../Context/DataLayer';
-import { useNavigate } from 'react-router-dom';
-import Profile from './Profile';
+import { NavLink, useNavigate } from 'react-router-dom';
+import logo from '../../assets/spotify_logo.svg';
 
 const Header = ({ spotify }) => {
     const Navigate = useNavigate();
@@ -51,44 +51,57 @@ const Header = ({ spotify }) => {
         }
     }, [searchValue, spotify]);
 
-    function handleClick(index) {
-        dispatch({ type: 'SET_SONGS', songs: data[index] });
+    function handleClick(id, type) {
         setShowDropdown(false);
-        Navigate('/');
+        Navigate(`/${type}/${id}`);
     }
 
     return (
-        <div className='header'>
-            <div className='header__left'>
-                <div className='search'>
-                    <input
-                        type='text'
-                        name='search'
-                        value={inputValue}
-                        onChange={handleChange}
-                        className='searchTerm'
-                        placeholder='Search for Artists, Songs & others for?'
-                    />
-                    <FaSearch className='searchButton' />
-                </div>
-                {showDropdown ? (
-                    <div className='search__item'>
-                        <IoCloseCircle
-                            onClick={() => setShowDropdown(false)}
-                            className='search__icon'
+        <div className='header-container'>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <NavLink to={'/'}>
+                    <img width={100} className='logo' src={logo} alt='logo' />
+                </NavLink>
+                <div className='header__left'>
+                    <div className='search'>
+                        <input
+                            type='text'
+                            name='search'
+                            value={inputValue}
+                            onChange={handleChange}
+                            className='searchTerm'
+                            placeholder='Search for Artists, Songs & others for?'
                         />
-                        {data.length
-                            ? data?.slice(0, 8)?.map((item, index) => (
-                                  <p key={item?.id} onClick={() => handleClick(index)}>
-                                      {item?.name}, {item?.type}
-                                  </p>
-                              ))
-                            : null}
+                        <FaSearch className='searchButton' />
                     </div>
-                ) : null}
+                    {showDropdown ? (
+                        <div className='search__item'>
+                            <IoCloseCircle
+                                onClick={() => setShowDropdown(false)}
+                                className='search__icon'
+                            />
+                            {data.length
+                                ? data?.slice(0, 8)?.map((item) => (
+                                      <p
+                                          key={item?.id}
+                                          onClick={() => handleClick(item?.id, item?.type)}>
+                                          {item?.name}, {item?.type}
+                                      </p>
+                                  ))
+                                : null}
+                        </div>
+                    ) : null}
+                </div>
             </div>
             {/* User Profile Details */}
-            <Profile spotify={spotify} />
+            <div className='header__right'>
+                <img
+                    src={user?.images[0]?.url}
+                    alt='user_profile'
+                    width={user?.images[0]?.width}
+                    height={user?.images[0]?.height}
+                />
+            </div>
         </div>
     );
 };
