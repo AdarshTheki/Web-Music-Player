@@ -14,8 +14,6 @@ const SongPlayer = ({ spotify }) => {
     const audioRef = useRef();
 
     const currentTrack = recentTracks?.[currentTrackIndex];
-    console.log(songs)
-    console.log(currentTrack)
 
     useEffect(() => {
         if (isPlaying) {
@@ -62,11 +60,11 @@ const SongPlayer = ({ spotify }) => {
     };
 
     return (
-        <div className='footer'>
-            <div className='footer-detail'>
+        <div className='music-player'>
+            <div className='music-detail'>
                 <SongsDetail {...currentTrack?.track} />
             </div>
-            <div className='footer-player'>
+            <div className='music-controls'>
                 {/* <p>{currentTrack?.track?.name}</p> */}
                 <audio ref={audioRef} src={currentTrack?.track?.preview_url}></audio>
                 <div className='controls'>
@@ -104,11 +102,11 @@ const SongsDetail = ({ album, artists = [], name = '', id }) => {
         <>
             <img src={album?.images[0]?.url} alt={name} />
             <div>
-                <NavLink className='bodyFooter__name' to={`/track/${id}`}>
+                <NavLink className='title' to={`/track/${id}`}>
                     {name?.substring(0, 25)}
                 </NavLink>
                 <p>
-                    <NavLink to={`/artists/${artists[0]?.id}`}>{artists[0]?.name}</NavLink>
+                    <NavLink className='artists_name' to={`/artists/${artists[0]?.id}`}>{artists[0]?.name}</NavLink>
                 </p>
             </div>
         </>

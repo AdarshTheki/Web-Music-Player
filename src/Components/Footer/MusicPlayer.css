@@ -1,29 +1,35 @@
-.footer {
-    height: 10vh;
-    overflow: hidden;
-    width: 100%;
+.music-player {
     display: flex;
     align-items: center;
-    padding: 0 5px;
-    background: #000;
+    justify-content: space-between;
 }
-.footer-detail {
+.music-detail {
     display: flex;
     gap: 10px;
     align-items: center;
     width: 300px;
 }
-.footer-detail a {
+.music-detail a {
     color: #fff;
+    font-size: 14px;
+    text-transform: capitalize;
+    text-decoration: none;
 }
-.footer-detail img {
-    width: 60px;
+.music-detail .title:hover {
+    text-decoration: underline;
+    color: var(--green);
+}
+.music-detail .artists_name:hover {
+    text-decoration: underline;
+}
+.music-detail img {
+    width: 50px;
     display: block;
 }
-.footer-player {
-    flex: 1;
+.music-controls {
+    width: 80%;
 }
-.footer-player .controls,
+.music-controls .controls,
 .progress {
     width: 100%;
     display: flex;
@@ -45,4 +51,23 @@
 }
 .controls svg:hover {
     color: var(--green);
+}
+
+@media (max-width: 30em) {
+    .music-player {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .music-detail {
+        justify-content: center;
+    }
+    .music-player .music-detail a {
+        font-size: 12px;
+    }
+    .controls svg {
+        font-size: 1.5rem;
+    }
+    .progress {
+        font-size: 12px;
+    }
 }
