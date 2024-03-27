@@ -46,11 +46,7 @@ const App = () => {
         }
     }, []);
 
-    return (
-        <div style={{ width: '100%', overflow: 'hidden' }}>
-            {token ? <Player spotify={spotify} /> : <Login />}
-        </div>
-    );
+    return <div>{token ? <Player spotify={spotify} /> : <Login />}</div>;
 };
 
 export default App;

@@ -4,8 +4,7 @@ export const initialState = {
     collections: [],
     artistsList: [],
     recentTracks: [],
-    playing: null,
-    songs: null,
+    album: null,
     // token: 'BQCYwJEC_IyUghOnY-8z9_pzi-hq_giHyVWfqFOKUr2INWZF_8oq6nHr2Fs3fnW1erWwTYLU3cUBidiLk5TZcbFt2WhQ2YuAgAsQQm54nKqJ5-KhWHFUxV1-_9khanMhOlUy_P1vaR1Xpm-2RoDjkUDknAFMyGbcG88GFLWnpqMFmq55pIe0R68R2E8N3PL97eD2yenojRuRJ5FCq-znb_ndUIFETM2WvbRA5l8gn2fqA4JgWCAIELWdes0r-XLP91g21Iett3dTe0oKh5r4GjyHaAfS7Y7-HtQBuRLBZyZ8HkM88XiUKLVDbwh0ZzQ5XIHZr1lg',
 };
 
@@ -43,15 +42,10 @@ const reducer = (state, action) => {
                 ...state,
                 artistsList: action.payload,
             };
-        case 'SET_SONGS':
+        case 'SET_ALBUM':
             return {
                 ...state,
-                songs: action.payload,
-            };
-        case 'SET_PLAYING':
-            return {
-                ...state,
-                playing: action.payload,
+                album: action.payload,
             };
         default:
             return state;

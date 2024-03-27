@@ -7,8 +7,8 @@ import Skeleton from '../Components/Loading/Skeleton';
 
 export default function Artists({ spotify }) {
     const { artistsId } = useParams();
-    const [tracks, setTracks] = useState([]);
     const [artists, setArtists] = useState([]);
+    const [tracks, setTracks] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -27,6 +27,7 @@ export default function Artists({ spotify }) {
         }
         fetchArtists();
     }, [spotify, artistsId]);
+
 
     if (loading) return <Skeleton />;
 

@@ -9,12 +9,14 @@ const Player = ({ spotify }) => {
     return (
         <BrowserRouter>
             <div className='player-container'>
-                <div className='player'>
-                    <div className='sidebar scrollbar'>
+                <div className='header'>
+                    <Header spotify={spotify} />
+                </div>
+                <div className='body scrollbar'>
+                    <div className='sidebar-main  scrollbar'>
                         <Sidebar />
                     </div>
-                    <div className='body scrollbar'>
-                        <Header spotify={spotify} />
+                    <div className='body-main scrollbar'>
                         <Routes>
                             <Route path='/' element={<Home spotify={spotify} />} />
                             <Route path='track/:trackId' element={<Tracks spotify={spotify} />} />
@@ -36,7 +38,7 @@ const Player = ({ spotify }) => {
                     </div>
                 </div>
                 <div className='footer'>
-                    <MusicPlayer  spotify={spotify}/>
+                    <MusicPlayer spotify={spotify} />
                 </div>
             </div>
         </BrowserRouter>
